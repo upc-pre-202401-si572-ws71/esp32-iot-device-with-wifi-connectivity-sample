@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "author": "Angel Velasquez",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-v1", "id": "esp", "top": 208.48, "left": -43.2, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "distance-sensor",
+      "top": -113.7,
+      "left": -80.9,
+      "attrs": { "distance": "120" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "safe-led",
+      "top": 34.8,
+      "left": -5.8,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "unsafe-led",
+      "top": 15.6,
+      "left": -53.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 118.6,
+      "left": -10.45,
+      "rotate": 270,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 118.6,
+      "left": -58.45,
+      "rotate": 270,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "display",
+      "top": -12.8,
+      "left": 130.4,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "display:VCC", "esp:3V3", "red", [] ],
+    [ "display:SCL", "esp:D22", "purple", [] ],
+    [ "display:SDA", "esp:D21", "orange", [] ],
+    [ "display:GND", "esp:GND.1", "black", []],
+    [ "safe-led:C", "esp:GND.1", "black", [] ],
+    [ "unsafe-led:C", "esp:GND.2", "black", [] ],
+    [ "r1:1", "esp:D2", "green", [] ],
+    [ "r1:2", "safe-led:A", "green", [] ],
+    [ "r2:1", "esp:D4", "green", [] ],
+    [ "r2:2", "unsafe-led:A", "green", [] ],
+    [ "distance-sensor:GND", "esp:GND.2", "black", [ "h-106.8", "v374.4" ] ],
+    [ "distance-sensor:VCC", "esp:VIN", "red", [ "h-57.6", "v384" ] ],
+    [ "distance-sensor:TRIG", "esp:D5", "purple", [] ],
+    [ "distance-sensor:ECHO", "esp:D18", "orange", []]
+  ],
+  "dependencies": {}
+}

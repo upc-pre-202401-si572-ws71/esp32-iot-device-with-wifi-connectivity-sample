@@ -1,0 +1,9 @@
+# Wokwi Library List
+# See https://docs.wokwi.com/guides/libraries
+
+WiFi
+HttpClient
+ArduinoJson
+LiquidCrystal I2C
+Time
+WiFiWire
